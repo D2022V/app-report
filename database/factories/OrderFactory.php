@@ -18,17 +18,17 @@ class OrderFactory extends Factory
     {
         $date_create = fake()->dateTimeBetween('- 12 month');
         $date_close = null;
-        $status = fake()->numberBetween(1, 4);
-        if ($status === 4) {
+        $status = fake()->numberBetween(1, 3);
+        if ($status === 3) {
             $date_close = fake()->dateTimeInInterval($date_create, '+20 days');
         }
         return [
 
-            'num_order' => fake()->unique()->numberBetween(1, 1000),
+            'num_order' => fake()->unique()->numberBetween(1, 500),
             'status_id' => $status,
             'date_create' => $date_create,
             'date_close' => $date_close,
-            'manager_id' => fake()->numberBetween(1, 8),
+            'manager_id' => fake()->numberBetween(1, 4),
             'category_id' => fake()->numberBetween(1, 4),
 
         ];
